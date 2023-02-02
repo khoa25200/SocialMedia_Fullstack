@@ -24,7 +24,6 @@ const Chat = () => {
     const getChats = async () => {
       try {
         const { data } = await userChats(user._id);
-        console.log('khoa', data);
         setChats(data);
       } catch (error) {
         console.log(error);
@@ -47,7 +46,6 @@ const Chat = () => {
     if (sendMessage!==null) {
       socket.current.emit("send-message", sendMessage);}
   }, [sendMessage]);
-
 
   // Get the message from socket server
   useEffect(() => {
