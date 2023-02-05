@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = process.env.BACKEND_BASE_URL
+const baseURL = 'https://social-server-ahua.onrender.com/'
 
 const API = axios.create({ baseURL: baseURL });
 
