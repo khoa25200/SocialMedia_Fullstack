@@ -4,3 +4,16 @@
   grid-template-columns: 18rem auto 20rem;
   gap: 1rem;
 }
+@media only screen and (max-width: 650px) {
+  .Home {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.menu-bar{
+  position: fixed;
+  bottom: 0;
+  width: 80%;
+  margin: 0 auto;
+}
