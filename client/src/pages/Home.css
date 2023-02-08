@@ -10,6 +10,11 @@
     justify-content: center;
   }
 }
+@media only screen and (max-width: 766px) {
+  .Home {
+    display: flex;
+  }
+}
 
 .menu-bar{
   position: fixed;

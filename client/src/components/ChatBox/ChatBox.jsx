@@ -100,9 +100,9 @@ useEffect(()=> {
                   <img
                     src={
                       userData?.profilePicture
-                        ? process.env.REACT_APP_PUBLIC_FOLDER +
+                        ? 'https://social-server-ahua.onrender.com/images/' +
                           userData.profilePicture
-                        : process.env.REACT_APP_PUBLIC_FOLDER +
+                        : 'https://social-server-ahua.onrender.com/images/' +
                           "defaultProfile.png"
                     }
                     alt="Profile"
