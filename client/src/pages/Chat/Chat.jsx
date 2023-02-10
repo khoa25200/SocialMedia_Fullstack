@@ -24,8 +24,6 @@ const Chat = () => {
     const getChats = async () => {
       try {
         const { data } = await userChats(user._id);
-        const { data2 } = await createChat(user._id);
-        console.log('khoa test=qưe=>', data)
         setChats(data);
       } catch (error) {
         console.log(error);
