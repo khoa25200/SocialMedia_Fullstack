@@ -1,17 +1,25 @@
 import ChatModel from "../models/chatModel.js";
 
 export const createChat = async (req, res) => {
-  const newChat = new ChatModel({
-    members: [req.body.senderId, req.body.receiverId],
-  });
   try {
-    const result = await newChat.save();
-    res.status(200).json(result);
+    const data = {
+      members: [req.body.senderId, req.body.receiverId],
+    }
+    const checkChat = await ChatModel.findOne(data)
+    if (!checkChat) {
+      const newChat = new ChatModel(data);
+      const result = await newChat.save();
+      res.status(200).json(result);
+    }
+    else {
+      res.status(200).json({
+        message: 'Chat has been created'
+      });
+    }
   } catch (error) {
     res.status(500).json(error);
   }
-};
-
+}
 export const userChats = async (req, res) => {
   try {
     const chat = await ChatModel.find({
