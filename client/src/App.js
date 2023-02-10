@@ -5,7 +5,6 @@ import Auth from "./pages/Auth/Auth";
 import Profile from "./pages/Profile/Profile";
 import { useSelector } from "react-redux";
 import Chat from "./pages/Chat/Chat";
-
 function App() {
   const user = useSelector((state) => state.authReducer.authData);
   return (
@@ -13,7 +12,7 @@ function App() {
       className="App"
       style={{
         height:
-          window.location.href === `${process.env.BACKEND_BASE_URL}/chat`
+          window.location.href === `${process.env.REACT_APP_PUBLIC_BASEURL}/chat`
             ? "calc(100vh - 2rem)"
             : "auto",
       }}

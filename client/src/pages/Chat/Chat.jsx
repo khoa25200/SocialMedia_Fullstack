@@ -5,7 +5,7 @@ import LogoSearch from "../../components/LogoSearch/LogoSearch";
 import NavIcons from "../../components/NavIcons/NavIcons";
 import "./Chat.css";
 import { useEffect } from "react";
-import { userChats } from "../../api/ChatRequests";
+import { userChats, createChat } from "../../api/ChatRequests";
 import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
 
@@ -24,6 +24,8 @@ const Chat = () => {
     const getChats = async () => {
       try {
         const { data } = await userChats(user._id);
+        const { data2 } = await createChat(user._id);
+        console.log('khoa test=qưe=>', data)
         setChats(data);
       } catch (error) {
         console.log(error);

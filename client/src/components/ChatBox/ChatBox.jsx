@@ -88,6 +88,7 @@ useEffect(()=> {
 
   const scroll = useRef();
   const imageRef = useRef();
+  console.log('khoa==>chat', chat)
   return (
     <>
       <div className="ChatBox-container">
@@ -100,9 +101,9 @@ useEffect(()=> {
                   <img
                     src={
                       userData?.profilePicture
-                        ? 'https://social-server-ahua.onrender.com/images/' +
+                        ? process.env.REACT_APP_PUBLIC_FOLDER +
                           userData.profilePicture
-                        : 'https://social-server-ahua.onrender.com/images/' +
+                        : process.env.REACT_APP_PUBLIC_FOLDER +
                           "defaultProfile.png"
                     }
                     alt="Profile"

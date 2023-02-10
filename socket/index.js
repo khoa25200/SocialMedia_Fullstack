@@ -1,6 +1,6 @@
 const io = require("socket.io")(8800, {
   cors: {
-    origin: "https://social-media-fullstack.vercel.app",
+    origin: "*",
   },
 });
 
