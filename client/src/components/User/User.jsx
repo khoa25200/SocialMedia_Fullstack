@@ -25,7 +25,7 @@ const User = ({ person }) => {
       }
       console.log(dataNewMessage)
       const { data } = await createChat(dataNewMessage);
-      // window.location.href = '/chat'
+      window.location.href = '/chat'
       console.log('succes=>new', data)
     } catch (error) {
       console.log(error);
