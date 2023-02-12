@@ -6,7 +6,8 @@
     display: flex;
     flex-direction: column;
     font-size: 13px;
-    max-height: 10rem;
+    height: 400px;
+    overflow: scroll;
 }
 .follower{
     display: flex;

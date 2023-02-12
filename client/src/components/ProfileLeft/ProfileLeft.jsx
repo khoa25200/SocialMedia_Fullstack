@@ -6,14 +6,12 @@ import { useDevice } from "react-use-device";
 const ProfileLeft = () => {
   const { isMOBILE } = useDevice();
   return (
-    !isMOBILE && (
       <div className="ProfileSide">
         <LogoSearch />
         <InfoCard />
         <FollowersCard />
       </div>
     )
-  );
 };
 
 export default ProfileLeft;
