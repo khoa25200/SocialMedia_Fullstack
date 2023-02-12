@@ -5,18 +5,28 @@ import RightSide from "../components/RightSide/RightSide";
 import { useDevice } from "react-use-device";
 import "./Home.css";
 import NavIcons from "./../components/NavIcons/NavIcons";
+import LogoSearch from "./../components/LogoSearch/LogoSearch";
+import Hamburger from "./../components/Hamburger/Hamburger";
 const Home = () => {
-  const { isMOBILE } = useDevice();
+  const { isMOBILE, isDESKTOP } = useDevice();
   return (
     <>
-      <div className="Home">
-        {!isMOBILE && <ProfileSide />}
-        <PostSide />
-        {!isMOBILE && <RightSide />}
-      </div>
-      {isMOBILE && (
-        <div className="menu-bar">
-          <NavIcons />
+      {isDESKTOP ? (
+        <div className="Home desktop">
+          <ProfileSide />
+          <PostSide />
+          <RightSide />
+        </div>
+      ) : (
+        <div className="Home mobile tablet">
+          <div className="mobile-header">
+            <Hamburger location="homepage" />
+            <LogoSearch />
+          </div>
+          <PostSide />
+          <div className="menu-bar">
+            <NavIcons />
+          </div>
         </div>
       )}
     </>

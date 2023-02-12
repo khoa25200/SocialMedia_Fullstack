@@ -1,0 +1,12 @@
+.sentMessage img:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+    color: red;
+    filter: drop-shadow(0 1px 1px rgba(0, 66, 248, 0.432));
+}
+.sentMessage{
+    padding: 2px;
+}
+.sentMessage img{
+    transition: transform .2s;
+}

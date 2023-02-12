@@ -18,7 +18,35 @@
 
 .menu-bar{
   position: fixed;
-  bottom: 0;
-  width: 80%;
+  bottom: 00px;
+  width: 100%;
+  background-color: var(--inputColor);
   margin: 0 auto;
+  padding: 5px 0 10px 0;
+}
+.mobile-header{
+  position: fixed;
+  top: 00px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5px 0 10px 0;
+  background: rgb(255, 255, 255);
+  display: flex;
+}
+.mobile-header .LogoSearch{
+  position: absolute;
+  right: 0;
+  top: 10px;
+  padding: 0 10px
+}
+.menu-bar .navIcons{
+  padding: 0 10px;
+}
+.Home.mobile.tablet{
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+.Home.mobile.tablet .PostSide{
+  width: 100%;
 }

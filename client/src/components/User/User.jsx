@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { followUser, unfollowUser } from "../../actions/UserAction";
 import messenger from "../../img/messenger.png";
 import { createChat } from "../../api/ChatRequests";
+import "./User.css"
 const User = ({ person }) => {
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user } = useSelector((state) => state.authReducer.authData);
