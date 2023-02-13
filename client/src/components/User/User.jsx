@@ -60,7 +60,7 @@ const User = ({ person }) => {
         {following ? "Unfollow" : "Follow"}
       </button>
       <div className="sentMessage" onClick={handleSentMessage}>
-        <img src={messenger} width="20px" alt="" />
+        <img src={messenger} width="18px" alt="" />
       </div>
     </div>
   );

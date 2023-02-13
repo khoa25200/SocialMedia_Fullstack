@@ -8,8 +8,10 @@ import { useEffect } from "react";
 import { userChats, createChat } from "../../api/ChatRequests";
 import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
+import { useDevice } from "react-use-device";
 
 const Chat = () => {
+  const { isMOBILE } = useDevice();
   const dispatch = useDispatch();
   const socket = useRef();
   const { user } = useSelector((state) => state.authReducer.authData);
@@ -35,7 +37,8 @@ const Chat = () => {
   // Connect to Socket.io
   useEffect(() => {
     // socket.current = io("ws://localhost:8800");
-    socket.current = io("https://social-socket-887y.onrender.com");
+    // socket.current = io("https://social-socket-887y.onrender.com");
+    socket.current = io(process.env.REACT_APP_PUBLIC_SOCKET);
     socket.current.emit("new-user-add", user._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
@@ -44,20 +47,18 @@ const Chat = () => {
 
   // Send Message to socket server
   useEffect(() => {
-    if (sendMessage!==null) {
-      socket.current.emit("send-message", sendMessage);}
+    if (sendMessage !== null) {
+      socket.current.emit("send-message", sendMessage);
+    }
   }, [sendMessage]);
 
   // Get the message from socket server
   useEffect(() => {
     socket.current.on("recieve-message", (data) => {
-      console.log(data)
+      console.log(data);
       setReceivedMessage(data);
-    }
-
-    );
+    });
   }, []);
-
 
   const checkOnlineStatus = (chat) => {
     const chatMember = chat.members.find((member) => member !== user._id);
@@ -93,16 +94,24 @@ const Chat = () => {
       {/* Right Side */}
 
       <div className="Right-side-chat">
-        <div style={{ width: "20rem", alignSelf: "flex-end" }}>
-          <NavIcons />
-        </div>
+        {!isMOBILE && (
+          <div style={{ width: "20rem", alignSelf: "flex-end" }}>
+            <NavIcons />
+          </div>
+        )}
         <ChatBox
           chat={currentChat}
           currentUser={user._id}
           setSendMessage={setSendMessage}
           receivedMessage={receivedMessage}
         />
+        
       </div>
+      {isMOBILE && (
+          <div className="menu-bar chat">
+            <NavIcons />
+          </div>
+        )}
     </div>
   );
 };
