@@ -6,7 +6,14 @@
 }
 .sentMessage{
     padding: 2px;
+    width: 25px;
 }
 .sentMessage img{
     transition: transform .2s;
+}
+.follower button{
+    /* width: 200px; */
+}
+.follower > div:first-child{
+    width: 200px;
 }
