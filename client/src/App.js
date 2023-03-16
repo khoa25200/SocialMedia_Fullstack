@@ -4,11 +4,22 @@ import Home from "./pages/Home";
 import Auth from "./pages/Auth/Auth";
 import Profile from "./pages/Profile/Profile";
 import { useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
 import Chat from "./pages/Chat/Chat";
+import { getServerStatus } from './api/CheckServerRunning';
+import Loading from "./components/Loading/Loading";
 function App() {
   const user = useSelector((state) => state.authReducer.authData);
+  const [render, setRender] = useState('');
+  useEffect(() => {
+    handleServerStatus()
+  }, []);
+  const handleServerStatus = async () => {
+    const { data } = await getServerStatus();
+    setRender(data)
+  }
   return (
-    <div
+    render === 'Server is running' ? <div
       className="App"
       style={{
         height:
@@ -50,8 +61,8 @@ function App() {
           element={user ? <Chat /> : <Navigate to="../auth" />}
         />
       </Routes>
-    </div>
-  );
+    </div> : <Loading />
+  )
 }
 
 export default App;
