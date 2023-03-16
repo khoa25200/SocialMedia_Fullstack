@@ -43,5 +43,5 @@ app.use('/upload', UploadRoute)
 app.use('/chat', ChatRoute)
 app.use('/message', MessageRoute)
 app.use('/', (req, res) => {
-  res.send("Express on Vercel");
+  res.send("Server is running");
 });
