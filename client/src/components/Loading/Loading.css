@@ -19,6 +19,9 @@
     font-size: .8rem;
     font-style: italic;
 }
+.f5-text{
+    color: rgb(255, 61, 61);
+}
 .loader-el::before, .loader-el::after {
     content: "";
     position: absolute;
