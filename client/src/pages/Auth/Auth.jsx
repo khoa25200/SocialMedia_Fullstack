@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./Auth.css";
+
 import Logo from "../../img/logo.png";
 import { logIn, signUp } from "../../actions/AuthActions.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { logInStatus } from "../../api/AuthRequests";
 const Auth = () => {
   const initialState = {
     firstname: "",
@@ -22,6 +23,7 @@ const Auth = () => {
 
   const [confirmPass, setConfirmPass] = useState(true);
 
+  const [loginStatus, setLoginStatus] = useState('');
   // const dispatch = useDispatch()
 
   // Reset Form
@@ -30,14 +32,25 @@ const Auth = () => {
     setConfirmPass(confirmPass);
   };
 
+
   // handle Change in input
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
+  // get login status
+  const handleGetStatus = async () => {
+      const { response } = await logInStatus(data)
+      setLoginStatus(response.data)
+      console.log({
+        'loginStatus': response.data
+      })
+  };
+
   // Form Submission
   const handleSubmit = (e) => {
     setConfirmPass(true);
+    handleGetStatus()
     e.preventDefault();
     if (isSignUp) {
       data.password === data.confirmpass
@@ -99,6 +112,7 @@ const Auth = () => {
               value={data.username}
               onChange={handleChange}
             />
+            {loginStatus === 'User not found' && <div className="login-status">{loginStatus}</div>}
           </div>
           <div>
             <input
@@ -110,6 +124,8 @@ const Auth = () => {
               value={data.password}
               onChange={handleChange}
             />
+            {loginStatus === 'wrong password' && <div className="login-status">{loginStatus}</div>}
+
             {isSignUp && (
               <input
                 required
