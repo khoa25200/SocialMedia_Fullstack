@@ -124,7 +124,7 @@ const Auth = () => {
               value={data.password}
               onChange={handleChange}
             />
-            {loginStatus === 'wrong password' && <div className="login-status">{loginStatus}</div>}
+            {loginStatus === 'Wrong password' && <div className="login-status">{loginStatus}</div>}
 
             {isSignUp && (
               <input
