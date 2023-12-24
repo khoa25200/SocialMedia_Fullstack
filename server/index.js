@@ -57,7 +57,7 @@ setInterval(() => {
   const message = `
       LOGGER Unhandled Rejection /queue/CONSUMER_TELEGRAM_BOT_BACKEND-CONSUMER-DR-42-22_TEST " Error\n    at PartnerRfService.<anonymous> (/app/application/finviet/eco-consumer/dist/appsqc/consumers/main.js:7768:23)\n    at Generator.throw (<anonymous>)\n    at rejected (/app/application/finviet/eco-consumer/node_modules/tslib/tslib.js:115:69)\n    at runMicrotasks (<anonymous>)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"`;
   sendTelegramMessage(chatId, message);
-}, 200000);
+}, 690000);
 
 setInterval(() => {
   const chatId = -4089535163;
