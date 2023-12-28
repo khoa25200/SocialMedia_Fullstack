@@ -73,3 +73,35 @@
   left: 10px;
   font-weight: bold;
 }
+.tele-button {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-color: #0088cc; /* Màu chính của Telegram */
+    position: relative;
+    outline: none;
+}
+
+.tele-button::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff; /* Màu nền của biểu tượng */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tele-button::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/023/986/534/original/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png'); /* Đường dẫn đến biểu tượng Telegram */
+    background-size: cover;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

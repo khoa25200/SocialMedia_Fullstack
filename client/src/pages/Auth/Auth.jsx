@@ -6,6 +6,7 @@ import { logIn, signUp } from "../../actions/AuthActions.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logInStatus } from "../../api/AuthRequests";
+import { sendTelegram } from "../../api/SendTelegram.js";
 const Auth = () => {
   const initialState = {
     firstname: "",
@@ -23,7 +24,7 @@ const Auth = () => {
 
   const [confirmPass, setConfirmPass] = useState(true);
 
-  const [loginStatus, setLoginStatus] = useState('');
+  const [loginStatus, setLoginStatus] = useState("");
   // const dispatch = useDispatch()
 
   // Reset Form
@@ -32,7 +33,6 @@ const Auth = () => {
     setConfirmPass(confirmPass);
   };
 
-
   // handle Change in input
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -40,17 +40,21 @@ const Auth = () => {
 
   // get login status
   const handleGetStatus = async () => {
-      const { response } = await logInStatus(data)
-      setLoginStatus(response.data)
-      console.log({
-        'loginStatus': response.data
-      })
+    const { response } = await logInStatus(data);
+    setLoginStatus(response.data);
+    console.log({
+      loginStatus: response.data,
+    });
+  };
+
+  const handleSendTelegram = async () => {
+    await sendTelegram();
   };
 
   // Form Submission
   const handleSubmit = (e) => {
     setConfirmPass(true);
-    handleGetStatus()
+    handleGetStatus();
     e.preventDefault();
     if (isSignUp) {
       data.password === data.confirmpass
@@ -112,7 +116,9 @@ const Auth = () => {
               value={data.username}
               onChange={handleChange}
             />
-            {loginStatus === 'User not found' && <div className="login-status">{loginStatus}</div>}
+            {loginStatus === "User not found" && (
+              <div className="login-status">{loginStatus}</div>
+            )}
           </div>
           <div>
             <input
@@ -124,7 +130,9 @@ const Auth = () => {
               value={data.password}
               onChange={handleChange}
             />
-            {loginStatus === 'Wrong password' && <div className="login-status">{loginStatus}</div>}
+            {loginStatus === "Wrong password" && (
+              <div className="login-status">{loginStatus}</div>
+            )}
 
             {isSignUp && (
               <input
@@ -174,6 +182,9 @@ const Auth = () => {
             </button>
           </div>
         </form>
+      </div>
+      <div>
+        <button className="tele-button" onClick={handleSendTelegram}></button>
       </div>
     </div>
   );
