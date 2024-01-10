@@ -39,7 +39,7 @@ mongoose
 
 // Initialize the Telegram bot
 const botToken = '6693408491:AAE5sYV3YThRwOI3yTjfa1zEKfVg1r5DWRw'; // Replace with your actual bot token
-const bot = new TelegramBot(botToken, { polling: true });
+const bot = new TelegramBot(botToken, { polling: false });
 
 // Middleware to send a Telegram message
 const sendTelegramMessage = (chatId, message) => {

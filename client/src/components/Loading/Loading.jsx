@@ -2,9 +2,9 @@ import "./Loading.css";
 
 function Loading() {
   return (
-    <div class="loader">
-      <i class="loader-el"></i>
-      <i class="loader-el"></i>
+    <div className="loader">
+      <i className="loader-el"></i>
+      <i className="loader-el"></i>
       <div className="main-text">
         <br />
         Waiting Connect to Server 😘

